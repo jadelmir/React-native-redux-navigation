@@ -16,14 +16,28 @@ export const navReducer = (state = initialState, action) => {
 			});
 			break;
 		case "GOTO_MAIN":
-			nextAction = NavigationActions.navigate({
-				routeName: "MainSreen",
-				params: { ...action.payload }
+			nextAction = NavigationActions.reset({
+				index: 0,
+				key: null,
+				actions: [
+					NavigationActions.navigate({
+						routeName: "Main",
+						params: { ...action.payload }
+					})
+				]
 			});
+
 			break;
 		case "GOTO_SIGNIN":
 			nextAction = NavigationActions.navigate({
 				routeName: "Login",
+				params: { ...action.payload }
+			});
+			break;
+		case "GOTO_CALENDAR":
+			console.log("it is in the router");
+			nextAction = NavigationActions.navigate({
+				routeName: "CalendarScreen",
 				params: { ...action.payload }
 			});
 			break;

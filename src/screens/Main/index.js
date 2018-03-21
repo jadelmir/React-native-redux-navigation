@@ -1,19 +1,17 @@
 import React, { Component } from "react";
 import { Text, View, Button } from "react-native";
 import { connect } from "react-redux";
+import { gotoCalendar } from "./actions";
+import BTN from "components/btn";
 class Main extends Component {
-	onClickButton() {
-		console.log("btn clicked");
+	goToCalendar() {
+		this.props.gotoCalendar();
 	}
 	render() {
 		return (
 			<View>
 				<Text>welcome to main page</Text>
-				<Button
-					onPress={this.onClickButton}
-					title="go to sign in"
-					color="#841584"
-				/>
+				<BTN title="Calendar" onPress={this.goToCalendar.bind(this)} />
 			</View>
 		);
 	}
@@ -22,4 +20,4 @@ const mapStateToProps = () => {
 	return {};
 };
 
-export default connect(mapStateToProps, {})(Main);
+export default connect(mapStateToProps, { gotoCalendar })(Main);
